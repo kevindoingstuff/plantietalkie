@@ -1,0 +1,10 @@
+langchain
+langchain-google-genai
+langchain-community
+python-dotenv
+streamlit
+faiss-cpu
+pinecone-client
+sqlalchemy
+pyyaml
+pathlib

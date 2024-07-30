@@ -1,0 +1,57 @@
+import pandas as pd
+import sqlalchemy as sa
+import yaml
+import sqlite3
+from pathlib import Path
+import os
+import sys
+current_script_path = Path(__file__).resolve()
+project_root = current_script_path.parents[2]
+sys.path.append(str(project_root))
+from src.data.database.sqldatabase import PlantReader
+
+class ExcelPreprocessor:
+    def __init__(self, config_path):
+        self.load_config(config_path)
+        self.data_dir = self.data_path
+        self.engine = sa.create_engine(f'sqlite:///{self.db_path}')
+
+    def load_config(self, config_path):
+        #path from root directory
+        current_script_path = Path(__file__).resolve()
+        root_directory = current_script_path.parents[2]
+        #path from relative config path
+        config_path = root_directory / config_path
+        self.root_directory = root_directory
+        with open(config_path, 'r') as file:
+            self.config = yaml.safe_load(file)
+            self.data_path = root_directory / self.config['data_directory']
+            self.name = self.config["database"]['db_name']
+            self.db_path = root_directory / "data" / "database" / self.name
+    def process_excel_file(self, file_name, sheet_name=None, columns=None):
+        file_path = os.path.join(self.data_dir, file_name)
+        try:
+            df = pd.read_excel(file_path)
+            # Load to Database
+            table_name = sheet_name or os.path.splitext(file_name)[0]
+            df.to_sql(table_name, self.engine, if_exists='replace', index=False)
+
+        except Exception as e:
+            print(f"Error processing {file_name}: {e}")
+    
+    def process_folder(self):
+        for file_name in os.listdir(self.data_dir):
+            if file_name.endswith(('.xls', '.xlsx', '.xlsm')):
+                self.process_excel_file(file_name)
+
+    def preprocess(self):
+        reader = PlantReader(self.db_path)
+        reader.connect()
+        
+        # Close the database connection
+        reader.close()
+
+# Assuming you have SQLite for simplicity
+preprocessor = ExcelPreprocessor('configs\\database.yaml')
+preprocessor.process_folder()  # Load all files and their sheets
+preprocessor.preprocess()  # Check the tables in the database
