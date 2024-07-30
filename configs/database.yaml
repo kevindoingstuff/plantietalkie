@@ -1,0 +1,6 @@
+database:
+  db_type: sqlite
+  db_name: plant.db  # Adjust if using a different database
+
+# Path to the directory where the Excel files are stored
+data_directory: docs
