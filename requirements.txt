@@ -1,10 +1,20 @@
-langchain
-langchain-google-genai
-langchain-community
-python-dotenv
+# Web
+flask
+flask-cors
 streamlit
-faiss-cpu
-pinecone-client
+
+# LLM / agent stack — code uses langchain_core.pydantic_v1 and bind_functions,
+# which were removed in the 1.x lines, so stay below 1.0
+langchain<1
+langchain-community<1
+langchain-core<1
+langchain-openai<1
+langgraph<1
+google-generativeai
+
+# Data
 sqlalchemy
-pyyaml
-pathlib
+pillow
+
+# Config
+python-dotenv

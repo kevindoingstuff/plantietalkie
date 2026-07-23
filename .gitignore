@@ -1,1 +1,25 @@
+# Environments & secrets
+.env
+.env.*
+!.env.example
 plant/
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Next.js build output
+.next/
+
+# Databases (regenerate with src/data/database/test_create_db.py)
+*.db
+
+# Editor / OS
+.vscode/
+.DS_Store
