@@ -1,0 +1,65 @@
+/**
+* @license
+*
+* Font Family: Nohemi
+* Designed by: Andres Torresi, Veronika Burian
+* URL: https://www.fontshare.com/fonts/nohemi
+* © 2024 Indian Type Foundry
+*
+* Nohemi Regular
+* Nohemi Medium
+* Nohemi Bold
+* Nohemi Black
+* Nohemi Variable
+*
+*/
+
+@font-face {
+  font-family: 'Nohemi-Regular';
+  src: url('../fonts/Nohemi-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nohemi-Medium';
+  src: url('../fonts/Nohemi-Medium.woff2') format('woff2'),
+       url('../fonts/Nohemi-Medium.woff') format('woff');
+  font-weight: 500;
+  font-display: block;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nohemi-Bold';
+  src: url('../fonts/Nohemi-Bold.woff2') format('woff2'),
+       url('../fonts/Nohemi-Bold.woff') format('woff');
+  font-weight: 700;
+  font-display: block;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nohemi-Black';
+  src: url('../fonts/Nohemi-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: 'wght' 400.0;
+*
+* available axes:
+* 'wght' (range from 400.0 to 900.0)
+*/
+@font-face {
+  font-family: 'Nohemi-Variable';
+  src: url('../fonts/Nohemi-VF.ttf') format('ttf');
+  font-weight: 400 900;
+  font-display: swap;
+  font-style: normal;
+} 
